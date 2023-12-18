@@ -5,20 +5,22 @@ import { useNavigation } from '@react-navigation/native';
 import { ENTITLEMENT_ID } from '../../constants';
 import styles from './styles.js';
 
-const PackageItem = ({ purchasePackage, setIsPurchasing }) => {
+const PackageItem = ({purchasePackage, setIsPurchased}) => {
   const {
-    product: { title, description, priceString },
+    product: {title, description, priceString},
   } = purchasePackage;
 
   const navigation = useNavigation();
 
   const onSelection = async () => {
-    setIsPurchasing(true);
+    setIsPurchased(true);
 
     try {
-      const { purchaserInfo } = await Purchases.purchasePackage(purchasePackage);
+      const {purchaserInfo} = await Purchases.purchasePackage(purchasePackage);
 
-      if (typeof purchaserInfo.entitlements.active[ENTITLEMENT_ID] !== 'undefined') {
+      if (
+        typeof purchaserInfo.entitlements.active[ENTITLEMENT_ID] !== 'undefined'
+      ) {
         navigation.goBack();
       }
     } catch (e) {
@@ -26,13 +28,13 @@ const PackageItem = ({ purchasePackage, setIsPurchasing }) => {
         Alert.alert('Error purchasing package', e.message);
       }
     } finally {
-      setIsPurchasing(false);
+      setIsPurchased(false);
     }
   };
 
   return (
     <Pressable onPress={onSelection} style={styles.container}>
-      <View style={styles.left}>
+      <View>
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.terms}>{description}</Text>
       </View>

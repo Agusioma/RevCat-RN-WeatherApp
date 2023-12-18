@@ -26,11 +26,10 @@ const WeatherScreen = () => {
   const navigation = useNavigation();
 
   const changeEnvironment = () => {
-    // we'll change the environment in a future update
     console.log('Change environment');
   };
 
-  const performMagic = async () => {
+  const changeWeather = async () => {
     /*
      We should check if we can magically change the weather (subscription active) and if not, display the paywall.
      */
@@ -65,7 +64,7 @@ const WeatherScreen = () => {
       </Pressable>
 
       {/* The magic button that is disabled behind our paywall */}
-      <Pressable onPress={performMagic} style={styles.changeWeatherButton}>
+      <Pressable onPress={changeWeather} style={styles.changeWeatherButton}>
         <Text style={styles.changeWeatherTitle}>✨ Change the Weather</Text>
       </Pressable>
 

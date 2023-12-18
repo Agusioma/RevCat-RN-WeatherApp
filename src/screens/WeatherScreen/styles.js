@@ -29,7 +29,9 @@ const styles = StyleSheet.create({
     paddingTop: 16,
   },
   changeWeatherButton: {
+    backgroundColor: '#F1545B',
     marginTop: 'auto',
+    padding: 10,
   },
   changeWeatherTitle: {
     color: 'white',
