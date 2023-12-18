@@ -11,4 +11,6 @@ export const API_KEY = '<Your-API-Key here>';
 /*
  The entitlement ID from the RevenueCat dashboard that is activated upon successful in-app purchase for the duration of the purchase.
  */
-export const ENTITLEMENT_ID = 'gold';
+export const ENTITLEMENT_ID = '<Your-entitlement-ID-here>';
+
+export const OFFERING_ID = '<Your-Offering-ID-here>'

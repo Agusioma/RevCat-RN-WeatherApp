@@ -8,6 +8,7 @@ import { View, Text, FlatList, Alert } from 'react-native';
 import Purchases from 'react-native-purchases';
 import { PackageItem } from '../../components';
 import styles from './styles.js';
+import {OFFERING_ID} from './src/constants';
 
 /*
  An example paywall that uses the current offering.
@@ -24,8 +25,8 @@ const PaywallScreen = () => {
     const getPackages = async () => {
       try {
         const offerings = await Purchases.getOfferings();
-        if (offerings.current !== null && offerings.all["gold-offer-weather"].availablePackages.length !== 0) {
-          setPackages(offerings.all["gold-offer-weather"].availablePackages);
+        if (offerings.current !== null && offerings.all[OFFERING_ID].availablePackages.length !== 0) {
+          setPackages(offerings.all[OFFERING_ID].availablePackages);
         }
       } catch (e) {
         Alert.alert('Error getting offers', e.message);
